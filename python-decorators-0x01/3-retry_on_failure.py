@@ -26,7 +26,7 @@ def retry_on_failure(retries=3, delay=2):
                     attempts += 1
                     print(f"[RETRY] Attempt {attempts} failed: {e}")
                     if attempts < retries:
-                        time.delay()
+                        time.sleep(delay)
                     else:
                         print("[RETRY] All attempts failed.")
                         raise
