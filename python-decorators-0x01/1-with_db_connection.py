@@ -5,15 +5,10 @@ def with_db_connection(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
         conn = sqlite3.connect('users.db')
-        
-        try:
-            result = func(conn, *args,** kwargs)
-            conn.close()
-            return result
-        except Exception as e:
-            conn.close()
-            raise e
-    return wrapper       
+    
+        return func(conn, *args,** kwargs)
+        conn.close()
+    return wrapper     
 
 @with_db_connection 
 def get_user_by_id(conn, user_id):
