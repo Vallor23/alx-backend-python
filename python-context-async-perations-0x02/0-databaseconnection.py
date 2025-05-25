@@ -1,6 +1,9 @@
 import mysql.connector
 from mysql.connector import Error
+import os
+from dotenv  import load_dotenv
 
+load_dotenv()
 class DatabaseConnection:
     def __init__(self, host, database, user, password):
         self.host = host
@@ -32,3 +35,18 @@ class DatabaseConnection:
                 self.connection.rollback()
                 self.cursor.close()
                 self.connection.close()
+                
+def main():
+    with DatabaseConnection(
+        host= os.getenv('MYSQL_HOST'),
+        user=os.getenv('MYSQL_USER'),
+        password=os.getenv('MYSQL_PASSWORD'),
+        database=os.getenv('MYSQL_DATABASE')
+    ) as cursor:
+        cursor.execute("SELECT * FROM users")
+        results = cursor.fetchall()
+        for row in results:
+            yield row
+
+if __name__ == "__main__":
+    main()
