@@ -5,7 +5,7 @@ import os
 
 # load_dotenv()
 
-async def  async_fetch_users():
+async def async_fetch_users():
     async with aiosqlite.connect("user_db") as db:
         db.row_factory = aiosqlite.Row #Allows accessing colums as rows
         async with db.execute("SELECT * FROM users") as cursor:
