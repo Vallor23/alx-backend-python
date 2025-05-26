@@ -21,7 +21,7 @@ class TestAccessNestedMap(unittest.TestCase):
         # edge cases
         ("missing_key", {"a":1}, ["a", "b"], KeyError ),
         ("non_mapping", {"a": {"b":1}}, ["a", "b", "c"], KeyError),
-        ("empty_path", {"a":1}, [], KeyError),
+        ("empty_path", {"a":1}, (), KeyError),
     ])
     def test_access_nested_map_exceptions(self, name, nested_map, path, expected_exception):
         with self.assertRaises(expected_exception):
