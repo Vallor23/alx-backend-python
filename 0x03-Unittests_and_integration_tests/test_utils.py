@@ -24,7 +24,7 @@ class TestAccessNestedMap(unittest.TestCase):
     def test_access_nested_map(self,
                                nested_map: Dict,
                                path: Tuple, expected: Any) -> None:
-        """Test access_nested_map returns the expected value for valid paths."""
+        """Test access_nested_map returns expected value for valid paths."""
         result = access_nested_map(nested_map, path)
         self.assertEqual(result, expected)
 
@@ -47,9 +47,8 @@ class TestGetJson(unittest.TestCase):
 
     @parameterized.expand([
         ("http://example.com", {"test_payload": {"payload": True}}),
-        ("http://holberton.io",{ "test_payload": {"payload": False}})
+        ("http://holberton.io", {"test_payload": {"payload": False}})
     ])
-
     @patch('requests.get')
     def test_get_json(self, test_url: str,
                       expected_json: Dict,
