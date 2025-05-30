@@ -1,15 +1,26 @@
 #!/usr/bin/env python3
+"""Unit tests for utility functions in the utils module.
+
+This module provides comprehensive test cases for the access_nested_map, get_json,
+and memoize functions, ensuring they handle various inputs and edge cases correctly
+as part of a GitHub organization client implementation.
+"""
+
+from typing import Any, Dict, Tuple
 import unittest
 from parameterized import parameterized
 from utils import access_nested_map,get_json, memoize
 from unittest.mock import patch, Mock
 class TestAccessNestedMap(unittest.TestCase):
+    """Test cases for the access_nested_map function."""
+    
     @parameterized.expand([
         ({"a": 1}, ("a",), 1),
         ({"a": {"b": 2}}, ("a",), {"b": 2}),
         ({"a": {"b": 2}}, ("a", "b"), 2),
     ])
-    def test_access_nested_map(self, nested_map, path, expected):
+    def test_access_nested_map(self, nested_map: Dict, path: Tuple, expected: Any) -> None:
+        """Test that access_nested_map returns the expected value for valid paths."""
         result = access_nested_map(nested_map, path)
         self.assertEqual(result, expected)
         
@@ -19,11 +30,13 @@ class TestAccessNestedMap(unittest.TestCase):
         ({"a": 1}, ["a", "b"]),
         # ("empty_path", {"a":1}, (), KeyError),
     ])
-    def test_access_nested_map_exception(self, nested_map, path):
+    def test_access_nested_map_exception(self, nested_map: Dict, path: Tuple) -> None:
+        """Test that access_nested_map raises KeyError for invalid paths."""
         with self.assertRaises(KeyError):
             access_nested_map(nested_map, path)
             
 class TestGetJson(unittest.TestCase):
+    """Test cases for the get_json function."""
     
     @parameterized.expand([
         ("http://example.com",{"test_payload": {"payload": True}}),
@@ -31,7 +44,8 @@ class TestGetJson(unittest.TestCase):
     ])
     
     @patch('requests.get') 
-    def test_get_json(self, test_url, expected_json, mock_requests_get):
+    def test_get_json(self, test_url: str, expected_json: Dict, mock_requests_get: Mock) -> None:
+        """Test that get_json returns the expected JSON from a URL."""
         mock_response = Mock() # creates a mock object to simulate the response from requests.get -> mock_requests_get(url)
         mock_response.json.return_value = expected_json # sets the mock’s json() method to return the expected JSON.
         mock_requests_get.return_value = mock_response # configures mock_requests_get to return mock_response
@@ -50,11 +64,11 @@ class TestMemoize(unittest.TestCase):
         class TestClass:
             """A test class with a memoized property."""
             
-            def a_method(self):
+            def a_method(self)->Any:
                 return 42
             
             @memoize
-            def a_property(self):
+            def a_property(self)->Any:
                 return self.a_method()
             
         with patch.object(TestClass, 'a_method') as mock_a_method:
