@@ -9,8 +9,9 @@ edge cases correctly as part of a GitHub organization client implementation.
 from typing import Any, Dict, Tuple
 import unittest
 from parameterized import parameterized
-from utils import access_nested_map,get_json,memoize
+from utils import access_nested_map, get_json, memoize
 from unittest.mock import patch, Mock
+
 
 class TestAccessNestedMap(unittest.TestCase):
     """Test cases for the access_nested_map function."""
@@ -70,10 +71,10 @@ class TestMemoize(unittest.TestCase):
         """
         class TestClass:
             """A test class with a memoized property."""
-            
+
             def a_method(self)->Any:
                 return 42
-            
+
             @memoize
             def a_property(self)->Any:
                 return self.a_method()
@@ -81,11 +82,10 @@ class TestMemoize(unittest.TestCase):
         with patch.object(TestClass, 'a_method') as mock_a_method:
             mock_a_method.return_value = 42
             test_instance = TestClass()
-            
+
             result1 = test_instance.a_property
             result2 = test_instance.a_property
-            
+
             self.assertEqual(result1, 42)
             self.assertEqual(result2, 42)
             mock_a_method.assert_called_once()
-            
