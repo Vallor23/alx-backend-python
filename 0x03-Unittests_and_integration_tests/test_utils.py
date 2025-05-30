@@ -41,13 +41,22 @@ class TestGetJson(unittest.TestCase):
 
 class TestMemoize(unittest.TestCase):
     def test_memoize(self):
+        """Test that memoize caches the result of a method after one call.
+
+        Args:
+            return_value: The value to be returned by the mocked method.
+            test_name: A descriptive name for the test case (used by parameterized).
+        """
         class TestClass:
+            """A test class with a memoized property."""
+            
             def a_method(self):
                 return 42
             
             @memoize
             def a_property(self):
                 return self.a_method()
+            
         with patch.object(TestClass, 'a_method') as mock_a_method:
             mock_a_method.return_value = 42
             test_instance = TestClass()
@@ -56,3 +65,4 @@ class TestMemoize(unittest.TestCase):
             self.assertEqual(result1, 42)
             self.assertEqual(result2, 42)
             mock_a_method.assert_called_once()
+            
