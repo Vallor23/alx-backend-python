@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
 """Unit tests for utility functions in the utils module.
 
-This module provides comprehensive test cases for the access_nested_map, get_json,
-and memoize functions, ensuring they handle various inputs and edge cases correctly
-as part of a GitHub organization client implementation.
+This module provides comprehensive test cases for the access_nested_map,
+get_json,and memoize functions, ensuring they handle various inputs and
+edge cases correctly as part of a GitHub organization client implementation.
 """
 
 from typing import Any, Dict, Tuple
 import unittest
 from parameterized import parameterized
-from utils import access_nested_map,get_json, memoize
+from utils import access_nested_map,get_json,memoize
 from unittest.mock import patch, Mock
+
 class TestAccessNestedMap(unittest.TestCase):
     """Test cases for the access_nested_map function."""
     
@@ -19,7 +20,9 @@ class TestAccessNestedMap(unittest.TestCase):
         ({"a": {"b": 2}}, ("a",), {"b": 2}),
         ({"a": {"b": 2}}, ("a", "b"), 2),
     ])
-    def test_access_nested_map(self, nested_map: Dict, path: Tuple, expected: Any) -> None:
+    def test_access_nested_map(self,
+                               nested_map: Dict,
+                               path: Tuple, expected: Any) -> None:
         """Test that access_nested_map returns the expected value for valid paths."""
         result = access_nested_map(nested_map, path)
         self.assertEqual(result, expected)
