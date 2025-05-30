@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import unittest
-from typing import Any, Dict, Tuple
+from typing import Any, Dict, List, Tuple
 from unittest import mock
 from parameterized import parameterized
 from unittest.mock import Mock, patch
@@ -50,5 +50,30 @@ class TestGithubOrgClient(unittest.TestCase):
         self.assertEqual(result, repos_url)
         mock_get_json.assert_called_once_with("https://api.github.com/orgs/test_org/repos")
         
-        
-        
+    @patch('client.get_json')
+    def test_public_repos(self, mock_get_json: Mock,) -> None:
+        """Test that GithubOrgClient.public_repos returns the correct list of repo names.
+
+        Args:
+            mock_get_json: Mock object for the get_json function.
+        """
+        org_name: str = "test_org"
+        repos_url: str = "https://api.github.com/orgs/test_org/repos"
+        repos_payload: List[Dict] = [
+            {"name": "repo1", "license": {"key": "mit"}},
+            {"name": "repo2", "license": {"key": "apache-2.0"}}
+        ]
+        mock_get_json.side_effect = repos_payload
+
+        with patch.o('client.GithubOrgClient._public_repos_url', return_value=repos_url) as mock_repos_url:
+            client: GithubOrgClient = GithubOrgClient(org_name)
+            result: List[str] = client.public_repos()
+            result_mit: List[str] = client.public_repos(license = "mit")
+
+            self.assertEqual(result, ["repo1", "repo2"])
+            self.assertEqual(result_mit, ["repo1"])
+
+            mock_get_json.assert_called_once_with(repos_url)
+            mock_repos_url.assert_called_once()
+            _ = client.public_repos()
+            mock_get_json.assert_called_once_with(repos_url)
