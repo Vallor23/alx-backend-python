@@ -54,12 +54,13 @@ class TestGetJson(unittest.TestCase):
                       expected_json: Dict,
                       mock_requests_get: Mock) -> None:
         """Test that get_json returns the expected JSON from a URL."""
-        mock_response = Mock() # creates a mock object to simulate the response from requests.get -> mock_requests_get(url)
-        mock_response.json.return_value = expected_json # sets the mock’s json() method to return the expected JSON.
-        mock_requests_get.return_value = mock_response # configures mock_requests_get to return mock_response
+        mock_response = Mock()
+        mock_response.json.return_value = expected_json
+        mock_requests_get.return_value = mock_response
         actual_json = get_json(test_url)
         self.assertEqual(actual_json, expected_json)
         mock_requests_get.assert_called_once_with(test_url)
+
 
 class TestMemoize(unittest.TestCase):
     def test_memoize(self):
@@ -67,18 +68,19 @@ class TestMemoize(unittest.TestCase):
 
         Args:
             return_value: The value to be returned by the mocked method.
-            test_name: A descriptive name for the test case (used by parameterized).
+            test_name: A descriptive name for the test case
+            (used by parameterized).
         """
         class TestClass:
             """A test class with a memoized property."""
 
-            def a_method(self)->Any:
+            def a_method(self) ->Any:
                 return 42
 
             @memoize
-            def a_property(self)->Any:
+            def a_property(self) ->Any:
                 return self.a_method()
-            
+
         with patch.object(TestClass, 'a_method') as mock_a_method:
             mock_a_method.return_value = 42
             test_instance = TestClass()
