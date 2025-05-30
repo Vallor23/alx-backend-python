@@ -19,17 +19,36 @@ class TestGithubOrgClient(unittest.TestCase):
     def test_org(self, org_name: str, mock_get_json: Mock) -> None: 
         """ Test that GithubOrgClient.org returns the correct value.
             and calls get_json exactly once.
-            
+
         Args:
             org_name: The name of the Github organization to test
             mock_get_json: Mock object for the get_json function
         """
-        expected_org: Dict = {"login": org_name,
-                              "id": 123,
-                              "repos_url": f"https://api.github.com/orgs/{org_name}/repos"
-                            }
+        expected_org: Dict = {
+            "login": org_name,
+            "id": 123,
+            "repos_url": "https://api.github.com/orgs/{org_name}/repos"
+        }
         mock_get_json.return_value = expected_org
         client: GithubOrgClient = GithubOrgClient(org_name)
         result: Dict = client.org
         self.assertEqual(result, expected_org)
         mock_get_json.assert_called_once_with(f"https://api.github.com/orgs/{org_name}")
+
+    @patch('client.get_json')
+    def test_public_repos_url(self, mock_get_json: Mock):
+        """Test that GithubOrgClient._public_repos_url returns the correct URL.
+
+        Args:
+         mock_get_json: Mock object for the get_json function.
+        """
+        org_name: str = "test_org"
+        repos_url: str = "https://api.github.com/orgs/test_org/repos"
+        mock_get_json.return_value = {"repos_url": repos_url}
+        client: GithubOrgClient = GithubOrgClient(org_name)
+        result = client._public_repos_url
+        self.assertEqual(result, repos_url)
+        mock_get_json.assert_called_once_with("https://api.github.com/orgs/test_org/repos")
+        
+        
+        
