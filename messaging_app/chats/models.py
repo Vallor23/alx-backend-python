@@ -7,9 +7,10 @@ class User(models.Model):
     user_id = models.UUIDField(primary_key= True, default= uuid.uuid4, editable= False)
     first_name = models.CharField(max_length= 30)
     last_name = models.CharField(max_length= 30)
+    email = models.EmailField(unique=True)
     password = models.CharField(max_length= 128)
-    profile_picture = models.ImageField(upload_to= 'profiles/', null= True, blank= True)
     phone_number = models.CharField(max_length= 15)
+    profile_picture = models.ImageField(upload_to= 'profiles/', null= True, blank= True)
     is_online = models.BooleanField(default= False)
     last_seen = models.DateField(null= True, blank= True)
 
