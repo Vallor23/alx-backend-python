@@ -66,7 +66,7 @@ class TestGithubOrgClient(unittest.TestCase):
         ]
         mock_get_json.side_effect = repos_payload
 
-        with patch.o('client.GithubOrgClient._public_repos_url', return_value=repos_url) as mock_repos_url:
+        with patch.object('client.GithubOrgClient._public_repos_url', return_value=repos_url) as mock_repos_url:
             client: GithubOrgClient = GithubOrgClient(org_name)
             result: List[str] = client.public_repos()
             result_mit: List[str] = client.public_repos(license = "mit")
@@ -97,7 +97,7 @@ class TestGithubOrgClient(unittest.TestCase):
         "repos_payload": repos_payload,
         "expected_repos": expected_repos,
         "apache2_repos": apache2_repos
-    }
+    }, class_name_func=lambda cls, num, params_dict: f"{cls.__name__}_{num}"
 ])
 class TestIntegrationGithubOrgClient(unittest.TestCase):
     """Integration tests for GithubOrgClient.public_repos"""
