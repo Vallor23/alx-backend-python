@@ -3,7 +3,7 @@
 import unittest
 from typing import Any, Dict, List, Tuple
 from unittest import mock
-from parameterized import parameterized
+from parameterized import parameterized, parameterized_class
 from unittest.mock import Mock, patch
 from client import GithubOrgClient, get_json
 from fixtures import org_payload, repos_payload, expected_repos, apache2_repos
