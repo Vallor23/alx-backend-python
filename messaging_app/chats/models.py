@@ -17,13 +17,13 @@ class User(models.Model):
         return f"{User.first_name} {User.last_name}"
     
 
-class Messages(models.Model):
+class Message(models.Model):
     message_id = models.UUIDField(primary_key= True, default= uuid.uuid4, editable= False)
     sender = models.ForeignKey('User', on_delete= models.CASCADE, related_name= 'sent_messages')
     receiver = models.ForeignKey('User', on_delete= models.CASCADE, related_name= 'received_messages')
     message_body = models.CharField(200)
     sent_at = models.DateTimeField(auto_now_add= True)
-    conversation = models.ForeignKey('Conversation', on_delete= models.CASCADE, related_name= 'messages')
+    conversation = models.ForeignKey('Conversation', on_delete= models.CASCADE, related_name= 'conversations')
 
 
 class Conversation(models.Model):

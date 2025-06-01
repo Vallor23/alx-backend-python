@@ -7,13 +7,13 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ["user_id", "username","email", "password", "phone_number", "profile_picture", "is_online", "last_seen"]
-        
+
     def validate_email(self, value):
         if not value:
             raise serializers.ValidationError("Email field cannot be empty.")
         return value
-        
-class MessagesSerializer(serializers.ModelSerializer):
+
+class MessageSerializer(serializers.ModelSerializer):
     sender = UserSerializer(read_only = True)
     receiver = UserSerializer(read_only = True)
     class Meta:
@@ -32,6 +32,6 @@ class ConversationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Conversation
         fields = ["conversation_id", "participants", "created_at","updated_at", "sent_at", "messages"]
-        
+
     def get_conversation_title(self, obj):
         return f"Conversation with {','.join([user.username for user in obj.participants.all()])}"
