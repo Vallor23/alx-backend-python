@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework import viewsets, status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.exceptions import ValidationError
-from django_filters.restfr import DjangoF
+from django_filters.rest_framework import DjangoFilterBackend
 from .models import Message, Conversation
 from .serializers import MessageSerializer, ConversationSerializer
 # Create your views here.
@@ -26,10 +26,10 @@ class ConversationViewSet(viewsets.ModelViewSet):
                 user_id = int(user_id)
                 # Ensure the requesting user can only filter by their own ID
                 if user_id != self.request.user.id:
-                    raise ValidationError("You can only filter by your own user ID.")
+                    raise ValidationError("You can only filter by your own user ID.", code= status.HTTP_403_FORBIDDEN)
                 return Conversation.objects.filter(participants__id = user_id)
             except:
-                raise ValidationError("Invalid user_id: must be an integer.")
+                raise ValidationError("Invalid user_id: must be an integer.", code= status.HTTP_400_BAD_REQUEST)
         #Optionally returnconversations based on the authenticated user
         return Conversation.objects.filter(participants = self.request.user)
     
