@@ -132,4 +132,5 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
         # you can also add other auth classes like TokenAuthentication here
     ],
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
