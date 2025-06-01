@@ -5,8 +5,7 @@ import uuid
 
 class User(models.Model):
     user_id = models.UUIDField(primary_key= True, default= uuid.uuid4, editable= False)
-    first_name = models.CharField(max_length= 30)
-    last_name = models.CharField(max_length= 30)
+    username = models.CharField(max_length= 30)
     email = models.EmailField(unique=True)
     password = models.CharField(max_length= 128)
     phone_number = models.CharField(max_length= 15)
@@ -21,7 +20,7 @@ class User(models.Model):
 class Messages(models.Model):
     message_id = models.UUIDField(primary_key= True, default= uuid.uuid4, editable= False)
     sender = models.ForeignKey('User', on_delete= models.CASCADE, related_name= 'sent_messages')
-    recipient = models.ForeignKey('User', on_delete= models.CASCADE, related_name= 'received_messages')
+    receiver = models.ForeignKey('User', on_delete= models.CASCADE, related_name= 'received_messages')
     message_body = models.CharField(200)
     sent_at = models.DateTimeField(auto_now_add= True)
     conversation = models.ForeignKey('Conversation', on_delete= models.CASCADE, related_name= 'messages')
