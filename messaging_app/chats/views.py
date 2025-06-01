@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from rest_framework import viewsets
+from rest_framework import viewsets, status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.exceptions import ValidationError
+from django_filters.restfr import DjangoF
 from .models import Message, Conversation
 from .serializers import MessageSerializer, ConversationSerializer
 # Create your views here.
@@ -31,6 +32,13 @@ class ConversationViewSet(viewsets.ModelViewSet):
                 raise ValidationError("Invalid user_id: must be an integer.")
         #Optionally returnconversations based on the authenticated user
         return Conversation.objects.filter(participants = self.request.user)
+    
+    def perform_create(self, serializer):
+        """
+        Create a new message with the authenticated user as the sender.
+        Expects 'conversation' (conversation ID) and 'content' in the request data.
+        """
+        
 
 
 class MessageViewSet(viewsets.ModelViewSet):
