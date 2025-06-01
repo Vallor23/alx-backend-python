@@ -97,8 +97,8 @@ class TestGithubOrgClient(unittest.TestCase):
         "repos_payload": repos_payload,
         "expected_repos": expected_repos,
         "apache2_repos": apache2_repos
-    }, class_name_func=lambda cls, num, params_dict: f"{cls.__name__}_{num}"
-])
+    }
+], class_name_func=lambda cls, num, params_dict: f"{cls.__name__}_{num}")
 class TestIntegrationGithubOrgClient(unittest.TestCase):
     """Integration tests for GithubOrgClient.public_repos"""
 
