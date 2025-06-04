@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, Messages, Conversation
+from .models import User, Message, Conversation
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -17,7 +17,7 @@ class MessageSerializer(serializers.ModelSerializer):
     sender = UserSerializer(read_only = True)
     receiver = UserSerializer(read_only = True)
     class Meta:
-        model = Messages
+        model = Message
         fields = ["message_id", "sender", "message_body", "receiver", "sent_at", "conversation"]
         read_only_fields = [ "sender", "receiver", "sent_at"]
 
