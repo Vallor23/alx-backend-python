@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets, status
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.authentication import SessionAuthentication, BaseAuthentication
 from rest_framework.exceptions import ValidationError
 from django_filters.rest_framework import DjangoFilterBackend
 from .models import Message, Conversation
@@ -8,11 +9,12 @@ from .serializers import MessageSerializer, ConversationSerializer
 # Create your views here.
 class ConversationViewSet(viewsets.ModelViewSet):
     """
-    A viewset for listing conversations
+    A viewset for listing, retrieving, creating, updating, and deleting conversations.
     Filters by user_id query parameter or defaults to the authenticated user's conversations.
     """
     queryset = Conversation.objects.all()
     serializer_class = ConversationSerializer
+    authentication_classes = [SessionAuthentication, BaseAuthentication]
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
@@ -48,6 +50,7 @@ class MessageViewSet(viewsets.ModelViewSet):
     """
     queryset = Message.objects.all()
     serializer_class = MessageSerializer
+    authentication_classes = [SessionAuthentication, BaseAuthentication]
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
