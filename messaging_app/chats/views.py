@@ -51,7 +51,7 @@ class MessageViewSet(viewsets.ModelViewSet):
     queryset = Message.objects.all()
     serializer_class = MessageSerializer
     authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsParticipantOfConversation]
 
     def get_queryset(self):
         conversation_id = self.request.query_params("conversation_id", None)
