@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets, status
-from rest_framework.permissions import IsAuthenticated
-from rest_framework.authentication import SessionAuthentication, BaseAuthentication
+from .permissions import IsParticipantOfConversation
+from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.exceptions import ValidationError
 from django_filters.rest_framework import DjangoFilterBackend
 from .models import Message, Conversation
@@ -14,8 +14,8 @@ class ConversationViewSet(viewsets.ModelViewSet):
     """
     queryset = Conversation.objects.all()
     serializer_class = ConversationSerializer
-    authentication_classes = [SessionAuthentication, BaseAuthentication]
-    permission_classes = [IsAuthenticated]
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsParticipantOfConversation]
 
     def get_queryset(self):
         """
@@ -50,7 +50,7 @@ class MessageViewSet(viewsets.ModelViewSet):
     """
     queryset = Message.objects.all()
     serializer_class = MessageSerializer
-    authentication_classes = [SessionAuthentication, BaseAuthentication]
+    authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
