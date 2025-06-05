@@ -1,0 +1,18 @@
+2025-06-05 17:53:07,988 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
+2025-06-05 17:53:15,050 - INFO - chats.middleware - 2025-06-05 17:53:15.050476 - User: AnonymousUser - Path: /api/conversations/
+2025-06-05 17:54:15,594 - INFO - chats.middleware - 2025-06-05 17:54:15.594912 - User: AnonymousUser - Path: /api/token/
+2025-06-05 17:54:36,244 - INFO - chats.middleware - 2025-06-05 17:54:36.244371 - User: AnonymousUser - Path: /api/conversations/
+2025-06-05 17:57:28,123 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
+2025-06-05 17:57:47,846 - INFO - chats.middleware - 2025-06-05 17:57:47.846184 - User: AnonymousUser - Path: /api/conversations/
+2025-06-05 17:58:31,488 - INFO - chats.middleware - 2025-06-05 17:58:31.488675 - User: AnonymousUser - Path: /api/conversations/
+2025-06-05 18:07:28,679 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
+2025-06-05 18:07:42,580 - INFO - chats.middleware - 2025-06-05 18:07:42.580889 - User: AnonymousUser - Path: /api/conversations/
+2025-06-05 18:08:16,415 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
+2025-06-05 18:08:19,165 - INFO - chats.middleware - 2025-06-05 18:08:19.164210 - User: AnonymousUser - Path: /api/conversations/
+2025-06-05 18:08:19,165 - INFO - chats.middleware - User AnonymousUser accessed their conversations.
+2025-06-05 18:08:42,847 - INFO - chats.middleware - 2025-06-05 18:08:42.847157 - User: AnonymousUser - Path: /api/token/
+2025-06-05 18:08:42,847 - INFO - chats.middleware - User AnonymousUser accessed their conversations.
+2025-06-05 18:09:02,826 - INFO - chats.middleware - 2025-06-05 18:09:02.825476 - User: AnonymousUser - Path: /api/conversations/
+2025-06-05 18:09:02,826 - INFO - chats.middleware - User AnonymousUser accessed their conversations.
+2025-06-05 18:12:03,799 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
+2025-06-05 18:22:56,884 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
