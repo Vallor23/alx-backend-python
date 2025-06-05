@@ -136,3 +136,33 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 20,
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
+
+import os
+import logging
+import logging.config
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,  # Keeps default Django loggers
+    'formatters': {
+        'verbose': {
+            'format': '{asctime} - {levelname} - {name} - {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'request_file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'requests.log'),  # File path
+            'formatter': 'verbose',
+        },
+    },
+    'loggers': {
+        'chats.middleware': {  # Or use the full module path like 'myapp.middleware'
+            'handlers': ['request_file'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+    }
+}
