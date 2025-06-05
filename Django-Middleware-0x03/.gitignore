@@ -1,0 +1,50 @@
+# Python compiled files
+__pycache__/
+*.py[cod]
+
+# Environment variables
+.env
+.env.*
+
+# Django stuff:
+*.log
+*.pot
+*.pyc
+*.sqlite3
+db.sqlite3
+media/
+
+# Static files (if collected)
+staticfiles/
+
+# VSCode settings
+.vscode/
+
+# PyCharm settings
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Coverage reports
+htmlcov/
+.coverage
+
+# Test results
+.pytest_cache/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# migrations
+*/migrations/*.pyc
+*/migrations/__pycache__/
+
+# If you use virtualenv or pipenv
+venv/
+env/
+pipenv/
+
+# If you have local config files
+local_settings.py
