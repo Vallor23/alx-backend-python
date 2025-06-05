@@ -1,7 +1,7 @@
 import datetime
 import logging
 
-logger = logging.Logger(__name__)  # get a logger for this module
+logger = logging.getLogger(__name__)  # get a logger for this module
 
 class RequestLoggingMiddleware:
     def __init__(self, get_response):
@@ -11,6 +11,6 @@ class RequestLoggingMiddleware:
     def __call__(self, request):
         user = request.user
         logger.info(f"{datetime.datetime.now()} - User: {user} - Path: {request.path}")
-        
+
         response = self.get_response(request)
         return response
