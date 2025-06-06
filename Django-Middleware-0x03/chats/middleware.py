@@ -14,3 +14,12 @@ class RequestLoggingMiddleware:
 
         response = self.get_response(request)
         return response
+    
+class OffensiveLanguageMiddleware:
+    pass
+
+class RestrictAccessByTimeMiddleware:
+     def __init__(self):
+         pass
+     def __call__(self, *args, **kwds):
+         pass
