@@ -87,3 +87,42 @@
 2025-06-06 10:30:59,841 - INFO - chats.middleware - 1749195059.8352609 - User: Enos - Path: /admin/
 2025-06-06 10:31:01,798 - INFO - chats.middleware - 1749195061.7952812 - User: Enos - Path: /admin/
 2025-06-06 10:31:03,024 - INFO - chats.middleware - 1749195063.0176966 - User: Enos - Path: /admin/
+2025-06-06 12:04:40,890 - INFO - chats.middleware - OffensiveLanguageMiddleware initialized.
+2025-06-06 12:04:40,891 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
+2025-06-06 12:06:20,325 - INFO - chats.middleware - 1749200780.3247626 - User: AnonymousUser - Path: /api/token/
+2025-06-06 12:06:49,412 - INFO - chats.middleware - 1749200809.4128077 - User: AnonymousUser - Path: /api/conversations/
+2025-06-06 12:08:04,406 - INFO - chats.middleware - 1749200884.3493648 - User: Enos - Path: /admin/
+2025-06-06 12:08:10,940 - INFO - chats.middleware - 1749200890.9349124 - User: Enos - Path: /admin/auth/user/
+2025-06-06 12:08:11,585 - INFO - chats.middleware - 1749200891.576592 - User: Enos - Path: /admin/jsi18n/
+2025-06-06 12:08:13,737 - INFO - chats.middleware - 1749200893.732705 - User: Enos - Path: /admin/auth/group/
+2025-06-06 12:08:13,905 - INFO - chats.middleware - 1749200893.899595 - User: Enos - Path: /admin/jsi18n/
+2025-06-06 12:08:59,189 - INFO - chats.middleware - 1749200939.1899717 - User: AnonymousUser - Path: /api/admin
+2025-06-06 12:09:25,763 - INFO - chats.middleware - 1749200965.7630107 - User: AnonymousUser - Path: /admin/
+2025-06-06 12:09:25,806 - INFO - chats.middleware - 1749200965.8069577 - User: AnonymousUser - Path: /admin/login/
+2025-06-06 12:11:08,505 - INFO - chats.middleware - RolepermissionMiddleware initialized.
+2025-06-06 12:11:08,506 - INFO - chats.middleware - OffensiveLanguageMiddleware initialized.
+2025-06-06 12:11:08,506 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
+2025-06-06 12:12:18,685 - INFO - chats.middleware - 1749201138.68475 - User: AnonymousUser - Path: /admin/
+2025-06-06 12:12:18,695 - INFO - chats.middleware - Accessing protected path: /admin/
+2025-06-06 12:12:18,696 - WARNING - chats.middleware - Unauthorized access attempt to /admin/ by 
+2025-06-06 12:13:26,675 - INFO - chats.middleware - RolepermissionMiddleware initialized.
+2025-06-06 12:13:26,675 - INFO - chats.middleware - OffensiveLanguageMiddleware initialized.
+2025-06-06 12:13:26,676 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
+2025-06-06 12:13:46,331 - INFO - chats.middleware - 1749201226.2834582 - User: Enos - Path: /admin/auth/group/
+2025-06-06 12:13:46,346 - INFO - chats.middleware - Accessing protected path: /admin/auth/group/
+2025-06-06 12:13:46,346 - INFO - chats.middleware - Access grant to /admin/auth/group/ for staff userEnos
+2025-06-06 12:13:46,848 - INFO - chats.middleware - 1749201226.8362455 - User: Enos - Path: /admin/jsi18n/
+2025-06-06 12:13:46,849 - INFO - chats.middleware - Accessing protected path: /admin/jsi18n/
+2025-06-06 12:13:46,849 - INFO - chats.middleware - Access grant to /admin/jsi18n/ for staff userEnos
+2025-06-06 12:13:53,380 - INFO - chats.middleware - 1749201233.3743415 - User: Enos - Path: /admin/auth
+2025-06-06 12:13:53,381 - INFO - chats.middleware - Accessing protected path: /admin/auth
+2025-06-06 12:13:53,381 - INFO - chats.middleware - Access grant to /admin/auth for staff userEnos
+2025-06-06 12:13:53,469 - INFO - chats.middleware - 1749201233.4637818 - User: Enos - Path: /admin/auth/
+2025-06-06 12:13:53,471 - INFO - chats.middleware - Accessing protected path: /admin/auth/
+2025-06-06 12:13:53,471 - INFO - chats.middleware - Access grant to /admin/auth/ for staff userEnos
+2025-06-06 12:14:29,186 - INFO - chats.middleware - RolepermissionMiddleware initialized.
+2025-06-06 12:14:29,186 - INFO - chats.middleware - OffensiveLanguageMiddleware initialized.
+2025-06-06 12:14:29,186 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
+2025-06-06 12:14:33,483 - INFO - chats.middleware - 1749201273.4830008 - User: AnonymousUser - Path: /admin/
+2025-06-06 12:14:33,490 - INFO - chats.middleware - Accessing protected path: /admin/
+2025-06-06 12:14:33,490 - WARNING - chats.middleware - Unauthorized access attempt to /admin/ by 

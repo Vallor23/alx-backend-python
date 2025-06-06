@@ -99,11 +99,11 @@ class RolepermissionMiddleware:
                 return HttpResponseForbidden("You must be logged in to access this resource")
 
             if not request.user.is_staff:
-                logger.warning(f"Forbidden access attempt to {request.path} by non-staff user: {request.user.username}")
+                logger.warning(f"Forbidden access attempt to {request.path} by non-staff user {request.user.username}")
                 return HttpResponseForbidden("You do not have the required permissions to access this resource(admin/moderator role required)")
 
             # If the user is authenticated and is staff, allow them to proceed
-            logger.info(f"Access grant to {request.path} for staff user{request.user.username}")
+            logger.info(f"Access grant to {request.path} for staff user {request.user.username}")
 
         # if the path is unprotected or user has access , proceed
         response = self.get_response(request)
