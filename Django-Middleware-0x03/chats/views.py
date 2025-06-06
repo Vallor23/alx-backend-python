@@ -6,7 +6,10 @@ from rest_framework.exceptions import ValidationError
 from django_filters.rest_framework import DjangoFilterBackend
 from .models import Message, Conversation
 from .serializers import MessageSerializer, ConversationSerializer
+from django.contrib.auth import get_user_model
 # Create your views here.
+User = get_user_model()
+
 class ConversationViewSet(viewsets.ModelViewSet):
     """
     A viewset for listing, retrieving, creating, updating, and deleting conversations.
@@ -22,18 +25,27 @@ class ConversationViewSet(viewsets.ModelViewSet):
         Filter conversations by user_id from query parameters or the authenticated user.
         Ensures only the authenticated user's conversations are accessible.
         """
-        user_id = self.request.query_params("user_id", None)
-        if user_id is not None:
-            try:
-                user_id = int(user_id)
-                # Ensure the requesting user can only filter by their own ID
-                if user_id != self.request.user.id:
-                    raise ValidationError("You can only filter by your own user ID.", code= status.HTTP_403_FORBIDDEN)
-                return Conversation.objects.filter(participants__id = user_id)
-            except:
-                raise ValidationError("Invalid user_id: must be an integer.", code= status.HTTP_400_BAD_REQUEST)
-        #Optionally returnconversations based on the authenticated user
-        return Conversation.objects.filter(participants = self.request.user)
+        user_id = self.request.query_params.get("user_id", None)
+        if not self.request.user.is_authenticated:
+            return Conversation.objects.none()
+        if self.request.user.is_staff:  # Admins see all conversations
+            return Conversation.objects.all()
+        return Conversation.objects.filter(participants=self.request.user)
+        
+        # if username:
+        #     try:
+        #         user = User.objects.get(username=username)
+        #     except User.DoesNotExist:
+        #         raise NotFound(detail="User not found.")
+        #         # user_id = int(user_id)
+        #         # # Ensure the requesting user can only filter by their own ID
+        #         # if user_id != self.request.user.id:
+        #         #     raise ValidationError("You can only filter by your own user ID.", code= status.HTTP_403_FORBIDDEN)
+        #     return Conversation.objects.filter(participants = username)
+        #     # except:
+        #     #     raise ValidationError("Invalid user_id: must be an integer.", code= status.HTTP_400_BAD_REQUEST)
+        # #Optionally returnconversations based on the authenticated user
+        # return Conversation.objects.filter(participants = self.request.user)
     
     def perform_create(self, serializer):
         """
