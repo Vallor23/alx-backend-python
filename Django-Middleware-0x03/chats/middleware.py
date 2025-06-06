@@ -19,7 +19,7 @@ class RequestLoggingMiddleware:
         
     def __call__(self, request):
         user = request.user
-        logger.info(f"{time.time.now()} - User: {user} - Path: {request.path}")
+        logger.info(f"{time.time()} - User: {user} - Path: {request.path}")
 
         response = self.get_response(request)
         return response
@@ -27,11 +27,11 @@ class RequestLoggingMiddleware:
 class RestrictAccessByTimeMiddleware:
     def __init__(self, get_response):
         self.get_response = get_response
-        self.start_hour = 9
+        self.start_hour = 7
         self.end_hour = 18
         
     def __call__(self, request):
-        current_time = timezone.now()
+        current_time = timezone.localtime()
         current_hour = current_time.hour
          
         if not (self.start_hour <= current_hour < self.end_hour):
@@ -44,7 +44,7 @@ class RestrictAccessByTimeMiddleware:
 class OffensiveLanguageMiddleware:
     def __init__(self, get_response):
         self.get_response = get_response
-        print("OffensiveLanguageMiddleware initialized.")
+        logger.info("OffensiveLanguageMiddleware initialized.")
         
     def __call__(self, request):
             x_fowarded_for = request.META.get('HTTP_X_FORWARDED_FOR')  # If behind a proxy
