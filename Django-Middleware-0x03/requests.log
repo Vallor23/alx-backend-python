@@ -16,3 +16,5 @@
 2025-06-05 18:09:02,826 - INFO - chats.middleware - User AnonymousUser accessed their conversations.
 2025-06-05 18:12:03,799 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
 2025-06-05 18:22:56,884 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
+2025-06-06 04:53:31,055 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
+2025-06-06 04:55:00,823 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
