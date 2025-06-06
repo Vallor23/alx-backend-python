@@ -18,3 +18,6 @@
 2025-06-05 18:22:56,884 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
 2025-06-06 04:53:31,055 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
 2025-06-06 04:55:00,823 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
+2025-06-06 09:52:34,409 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
+2025-06-06 09:53:21,600 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
+2025-06-06 09:53:38,590 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
