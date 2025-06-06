@@ -1,7 +1,8 @@
 from django.db import models
 import uuid
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
-# Create your models here.
 
 class User(models.Model):
     user_id = models.UUIDField(primary_key= True, default= uuid.uuid4, editable= False)
@@ -28,6 +29,6 @@ class Message(models.Model):
 
 class Conversation(models.Model):
     conversation_id = models.UUIDField(primary_key= True, default= uuid.uuid4, editable= False)
-    participants = models.ManyToManyField('User')
+    participants = models.ManyToManyField(User)
     created_at = models.DateTimeField(auto_now_add= True)
     updated_at = models.DateTimeField(auto_now= True)

@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'django_filters',
 ]
 
-from chats.middleware import RequestLoggingMiddleware
+# from chats.middleware import RequestLoggingMiddleware
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -53,7 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.RequestLoggingMiddleware'
+    'chats.middleware.RequestLoggingMiddleware'
 ]
 
 ROOT_URLCONF = 'messaging_app.urls'
