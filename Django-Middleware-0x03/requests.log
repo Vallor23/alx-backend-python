@@ -21,3 +21,58 @@
 2025-06-06 09:52:34,409 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
 2025-06-06 09:53:21,600 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
 2025-06-06 09:53:38,590 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
+2025-06-06 09:59:12,673 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
+2025-06-06 09:59:15,036 - INFO - chats.middleware - 1749193155.035711 - User: AnonymousUser - Path: /api/token/
+2025-06-06 10:02:13,950 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
+2025-06-06 10:02:18,613 - INFO - chats.middleware - 1749193338.6130483 - User: AnonymousUser - Path: /api/token/
+2025-06-06 10:02:31,692 - INFO - chats.middleware - 1749193351.6927655 - User: AnonymousUser - Path: /api/token/
+2025-06-06 10:02:44,956 - INFO - chats.middleware - 1749193364.9562874 - User: AnonymousUser - Path: /api/conversations/
+2025-06-06 10:03:03,680 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
+2025-06-06 10:04:02,961 - INFO - chats.middleware - OffensiveLanguageMiddleware initialized.
+2025-06-06 10:04:02,961 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
+2025-06-06 10:07:17,311 - INFO - chats.middleware - OffensiveLanguageMiddleware initialized.
+2025-06-06 10:07:17,312 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
+2025-06-06 10:07:47,435 - INFO - chats.middleware - OffensiveLanguageMiddleware initialized.
+2025-06-06 10:07:47,435 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
+2025-06-06 10:09:17,819 - INFO - chats.middleware - OffensiveLanguageMiddleware initialized.
+2025-06-06 10:09:17,819 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
+2025-06-06 10:09:21,351 - INFO - chats.middleware - 1749193761.349736 - User: AnonymousUser - Path: /api/conversations/
+2025-06-06 10:10:13,545 - INFO - chats.middleware - OffensiveLanguageMiddleware initialized.
+2025-06-06 10:10:13,553 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
+2025-06-06 10:10:14,040 - INFO - chats.middleware - 1749193814.0395007 - User: AnonymousUser - Path: /api/conversations/
+2025-06-06 10:11:41,681 - INFO - chats.middleware - OffensiveLanguageMiddleware initialized.
+2025-06-06 10:11:41,681 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
+2025-06-06 10:12:05,287 - INFO - chats.middleware - OffensiveLanguageMiddleware initialized.
+2025-06-06 10:12:05,287 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
+2025-06-06 10:12:06,956 - INFO - chats.middleware - 1749193926.9560685 - User: AnonymousUser - Path: /api/conversations/
+2025-06-06 10:12:21,073 - INFO - chats.middleware - OffensiveLanguageMiddleware initialized.
+2025-06-06 10:12:21,074 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
+2025-06-06 10:12:23,559 - INFO - chats.middleware - 1749193943.5590217 - User: AnonymousUser - Path: /api/conversations/
+2025-06-06 10:12:45,054 - INFO - chats.middleware - OffensiveLanguageMiddleware initialized.
+2025-06-06 10:12:45,055 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
+2025-06-06 10:12:54,981 - INFO - chats.middleware - 1749193974.981907 - User: AnonymousUser - Path: /api/conversations/
+2025-06-06 10:15:12,165 - INFO - chats.middleware - OffensiveLanguageMiddleware initialized.
+2025-06-06 10:15:12,166 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
+2025-06-06 10:15:16,634 - INFO - chats.middleware - 1749194116.6337702 - User: AnonymousUser - Path: /api/conversations/
+2025-06-06 10:16:09,549 - INFO - chats.middleware - OffensiveLanguageMiddleware initialized.
+2025-06-06 10:16:09,549 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
+2025-06-06 10:16:10,802 - INFO - chats.middleware - 1749194170.8029835 - User: AnonymousUser - Path: /api/conversations/
+2025-06-06 10:17:25,664 - INFO - chats.middleware - OffensiveLanguageMiddleware initialized.
+2025-06-06 10:17:25,665 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
+2025-06-06 10:17:32,777 - INFO - chats.middleware - 1749194252.7770917 - User: AnonymousUser - Path: /api/conversations/
+2025-06-06 10:17:58,257 - INFO - chats.middleware - OffensiveLanguageMiddleware initialized.
+2025-06-06 10:17:58,257 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
+2025-06-06 10:18:00,110 - INFO - chats.middleware - 1749194280.1108887 - User: AnonymousUser - Path: /api/conversations/
+2025-06-06 10:21:59,893 - INFO - chats.middleware - OffensiveLanguageMiddleware initialized.
+2025-06-06 10:21:59,894 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
+2025-06-06 10:22:02,957 - INFO - chats.middleware - 1749194522.9569185 - User: AnonymousUser - Path: /api/conversations/
+2025-06-06 10:22:15,874 - INFO - chats.middleware - OffensiveLanguageMiddleware initialized.
+2025-06-06 10:22:15,875 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
+2025-06-06 10:22:39,197 - INFO - chats.middleware - OffensiveLanguageMiddleware initialized.
+2025-06-06 10:22:39,197 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
+2025-06-06 10:23:28,331 - INFO - chats.middleware - OffensiveLanguageMiddleware initialized.
+2025-06-06 10:23:28,331 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
+2025-06-06 10:23:30,570 - INFO - chats.middleware - 1749194610.5703814 - User: AnonymousUser - Path: /api/conversations/
+2025-06-06 10:23:40,385 - INFO - chats.middleware - 1749194620.3855789 - User: AnonymousUser - Path: /api/conversations/
+2025-06-06 10:23:50,293 - INFO - chats.middleware - 1749194630.2931442 - User: AnonymousUser - Path: /api/token/
+2025-06-06 10:24:10,764 - INFO - chats.middleware - 1749194650.764369 - User: AnonymousUser - Path: /api/conversations/
