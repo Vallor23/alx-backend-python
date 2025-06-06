@@ -76,3 +76,14 @@
 2025-06-06 10:23:40,385 - INFO - chats.middleware - 1749194620.3855789 - User: AnonymousUser - Path: /api/conversations/
 2025-06-06 10:23:50,293 - INFO - chats.middleware - 1749194630.2931442 - User: AnonymousUser - Path: /api/token/
 2025-06-06 10:24:10,764 - INFO - chats.middleware - 1749194650.764369 - User: AnonymousUser - Path: /api/conversations/
+2025-06-06 10:30:34,726 - INFO - chats.middleware - 1749195034.5384977 - User: Enos - Path: /admin/auth/user/
+2025-06-06 10:30:37,313 - INFO - chats.middleware - 1749195037.261084 - User: Enos - Path: /admin/jsi18n/
+2025-06-06 10:30:38,155 - INFO - chats.middleware - 1749195038.1496725 - User: Enos - Path: /favicon.ico
+2025-06-06 10:30:42,476 - INFO - chats.middleware - 1749195042.4727478 - User: Enos - Path: /admin/auth/user/
+2025-06-06 10:30:42,745 - INFO - chats.middleware - 1749195042.70813 - User: Enos - Path: /admin/jsi18n/
+2025-06-06 10:30:48,884 - INFO - chats.middleware - 1749195048.878773 - User: Enos - Path: /admin/auth/user/
+2025-06-06 10:30:48,974 - INFO - chats.middleware - 1749195048.9630935 - User: Enos - Path: /admin/jsi18n/
+2025-06-06 10:30:54,679 - INFO - chats.middleware - 1749195054.6760106 - User: Enos - Path: /admin/
+2025-06-06 10:30:59,841 - INFO - chats.middleware - 1749195059.8352609 - User: Enos - Path: /admin/
+2025-06-06 10:31:01,798 - INFO - chats.middleware - 1749195061.7952812 - User: Enos - Path: /admin/
+2025-06-06 10:31:03,024 - INFO - chats.middleware - 1749195063.0176966 - User: Enos - Path: /admin/
