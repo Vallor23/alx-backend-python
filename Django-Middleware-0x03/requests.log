@@ -154,3 +154,7 @@
 2025-06-07 09:46:03,383 - INFO - chats.middleware - RolepermissionMiddleware initialized.
 2025-06-07 09:46:03,384 - INFO - chats.middleware - OffensiveLanguageMiddleware initialized.
 2025-06-07 09:46:03,384 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
+2025-06-07 09:46:43,560 - INFO - chats.middleware - RolepermissionMiddleware initialized.
+2025-06-07 09:46:43,560 - INFO - chats.middleware - OffensiveLanguageMiddleware initialized.
+2025-06-07 09:46:43,560 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
+2025-06-07 09:53:50,242 - INFO - chats.middleware - 1749279230.217543 - User: AnonymousUser - Path: /api/messages/
