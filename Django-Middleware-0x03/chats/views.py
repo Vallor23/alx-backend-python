@@ -7,6 +7,8 @@ from django_filters.rest_framework import DjangoFilterBackend
 from .models import Message, Conversation
 from .serializers import MessageSerializer, ConversationSerializer
 from django.contrib.auth import get_user_model
+from .pagination import MessagePagination
+
 # Create your views here.
 User = get_user_model()
 
@@ -60,10 +62,11 @@ class MessageViewSet(viewsets.ModelViewSet):
     A viewset for listing messages
     Filters by conversation_id query parameter or defaults to messages in the authenticated user's conversations.
     """
-    queryset = Message.objects.all()
+    queryset = Message.objects.all().order_by('sent_at')
     serializer_class = MessageSerializer
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsParticipantOfConversation]
+    pagination_classes = MessagePagination
 
     def get_queryset(self):
         conversation_id = self.request.query_params("conversation_id", None)
