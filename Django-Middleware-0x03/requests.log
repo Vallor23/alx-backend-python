@@ -126,3 +126,31 @@
 2025-06-06 12:14:33,483 - INFO - chats.middleware - 1749201273.4830008 - User: AnonymousUser - Path: /admin/
 2025-06-06 12:14:33,490 - INFO - chats.middleware - Accessing protected path: /admin/
 2025-06-06 12:14:33,490 - WARNING - chats.middleware - Unauthorized access attempt to /admin/ by 
+2025-06-06 16:38:04,020 - INFO - chats.middleware - 1749217082.4377897 - User: Enos - Path: /admin/auth/group/
+2025-06-06 16:38:04,070 - INFO - chats.middleware - Accessing protected path: /admin/auth/group/
+2025-06-06 16:38:04,070 - INFO - chats.middleware - Access grant to /admin/auth/group/ for staff user Enos
+2025-06-06 16:38:05,571 - INFO - chats.middleware - 1749217085.5500329 - User: Enos - Path: /admin/auth/user/
+2025-06-06 16:38:05,571 - INFO - chats.middleware - Accessing protected path: /admin/auth/user/
+2025-06-06 16:38:05,571 - INFO - chats.middleware - Access grant to /admin/auth/user/ for staff user Enos
+2025-06-06 16:38:14,793 - INFO - chats.middleware - 1749217094.7855284 - User: Enos - Path: /admin/jsi18n/
+2025-06-06 16:38:14,793 - INFO - chats.middleware - Accessing protected path: /admin/jsi18n/
+2025-06-06 16:38:14,793 - INFO - chats.middleware - Access grant to /admin/jsi18n/ for staff user Enos
+2025-06-06 16:38:17,248 - INFO - chats.middleware - 1749217097.2422323 - User: Enos - Path: /
+2025-06-06 16:38:35,797 - INFO - chats.middleware - 1749217115.7634258 - User: Enos - Path: /admin/auth/user/
+2025-06-06 16:38:35,797 - INFO - chats.middleware - Accessing protected path: /admin/auth/user/
+2025-06-06 16:38:35,797 - INFO - chats.middleware - Access grant to /admin/auth/user/ for staff user Enos
+2025-06-06 16:38:39,084 - INFO - chats.middleware - 1749217119.0815306 - User: Enos - Path: /admin/auth/user/
+2025-06-06 16:38:39,084 - INFO - chats.middleware - Accessing protected path: /admin/auth/user/
+2025-06-06 16:38:39,084 - INFO - chats.middleware - Access grant to /admin/auth/user/ for staff user Enos
+2025-06-06 16:38:39,184 - INFO - chats.middleware - 1749217119.1780663 - User: Enos - Path: /admin/jsi18n/
+2025-06-06 16:38:39,184 - INFO - chats.middleware - Accessing protected path: /admin/jsi18n/
+2025-06-06 16:38:39,184 - INFO - chats.middleware - Access grant to /admin/jsi18n/ for staff user Enos
+2025-06-06 16:38:42,688 - INFO - chats.middleware - 1749217122.6853607 - User: Enos - Path: /admin/auth/
+2025-06-06 16:38:42,688 - INFO - chats.middleware - Accessing protected path: /admin/auth/
+2025-06-06 16:38:42,688 - INFO - chats.middleware - Access grant to /admin/auth/ for staff user Enos
+2025-06-07 09:45:40,219 - INFO - chats.middleware - RolepermissionMiddleware initialized.
+2025-06-07 09:45:40,221 - INFO - chats.middleware - OffensiveLanguageMiddleware initialized.
+2025-06-07 09:45:40,221 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
+2025-06-07 09:46:03,383 - INFO - chats.middleware - RolepermissionMiddleware initialized.
+2025-06-07 09:46:03,384 - INFO - chats.middleware - OffensiveLanguageMiddleware initialized.
+2025-06-07 09:46:03,384 - INFO - chats.middleware - RequestLoggingMiddleware initialized.
