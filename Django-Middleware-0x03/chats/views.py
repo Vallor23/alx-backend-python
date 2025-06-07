@@ -8,6 +8,7 @@ from .models import Message, Conversation
 from .serializers import MessageSerializer, ConversationSerializer
 from django.contrib.auth import get_user_model
 from .pagination import MessagePagination
+from .filters import MessageFilter
 
 # Create your views here.
 User = get_user_model()
@@ -21,7 +22,7 @@ class ConversationViewSet(viewsets.ModelViewSet):
     serializer_class = ConversationSerializer
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsParticipantOfConversation]
-
+    
     def get_queryset(self):
         """
         Filter conversations by user_id from query parameters or the authenticated user.
@@ -67,6 +68,8 @@ class MessageViewSet(viewsets.ModelViewSet):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsParticipantOfConversation]
     pagination_classes = MessagePagination
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = MessageFilter
 
     def get_queryset(self):
         conversation_id = self.request.query_params("conversation_id", None)
