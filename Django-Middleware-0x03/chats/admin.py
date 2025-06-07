@@ -1,9 +1,9 @@
 from django.contrib import admin
+from .models import Message, Conversation, User
 
-
-@admin.register('Message')
+@admin.register(User)
 class MessageAdmin(admin.ModelAdmin):
-    list_display = ['user_id','username','email ', 'password', 'phone_number', 's_online', 'last_seen']
+    list_display = ['user_id','username','email', 'phone_number', 'is_online', 'last_seen']
     
-admin.register('Conversation')
-admin.register('User')
+admin.register(Conversation)
+admin.register(Message)
