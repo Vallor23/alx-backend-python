@@ -1,11 +1,13 @@
 from django.shortcuts import render
 from rest_framework import viewsets, status
 from .permissions import IsParticipantOfConversation
+from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.exceptions import ValidationError
 from django_filters.rest_framework import DjangoFilterBackend
 from .models import Message, Conversation
 from .serializers import MessageSerializer, ConversationSerializer
+
 # Create your views here.
 class ConversationViewSet(viewsets.ModelViewSet):
     """
@@ -15,7 +17,7 @@ class ConversationViewSet(viewsets.ModelViewSet):
     queryset = Conversation.objects.all()
     serializer_class = ConversationSerializer
     authentication_classes = [JWTAuthentication]
-    permission_classes = [IsParticipantOfConversation]
+    permission_classes = [IsAuthenticated, IsParticipantOfConversation]
 
     def get_queryset(self):
         """

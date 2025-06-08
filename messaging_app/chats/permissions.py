@@ -1,5 +1,6 @@
 from rest_framework import permissions
 from .models import Conversation, Message
+
 class  IsParticipantOfConversation(permissions.BasePermission): 
     """
     Permission to only allow participants of a conversation to access it.
