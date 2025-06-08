@@ -1,12 +1,13 @@
 from django.shortcuts import render
 from rest_framework import viewsets, status
-from .permissions import IsParticipantOfConversation
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.exceptions import ValidationError
 from django_filters.rest_framework import DjangoFilterBackend
+from .permissions import IsParticipantOfConversation
 from .models import Message, Conversation
 from .serializers import MessageSerializer, ConversationSerializer
+from .pagination import MessagePagination
 
 # Create your views here.
 class ConversationViewSet(viewsets.ModelViewSet):
@@ -18,6 +19,7 @@ class ConversationViewSet(viewsets.ModelViewSet):
     serializer_class = ConversationSerializer
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated, IsParticipantOfConversation]
+    pagination_class = MessagePagination
 
     def get_queryset(self):
         """
