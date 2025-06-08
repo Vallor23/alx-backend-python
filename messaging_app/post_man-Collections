@@ -1,0 +1,30 @@
+{
+	"name": "http://localhost:8000/api/token/",
+		"request": {
+			"method": "POST",
+			"header": [],
+			"body": {
+				"mode": "raw",
+				"raw": "{\r\n    \"username\":\"Enos\",\r\n    \"password\":\"Vallor@2025\",\r\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc0OTI4NzE4MiwiaWF0IjoxNzQ5MjAwNzgyLCJqdGkiOiI5NGRlMzM4Nzk3ZTk0NDc3ODBlN2UwMzg4OWJmNDljMCIsInVzZXJfaWQiOjF9._n64G0_Jb0UfVj2vOTwRgnto8GNHuYet_Fo-sK__U-Y\"\r\n}",
+					"options": {
+						"raw": {
+						"language": "json"
+						}
+					}
+			},
+			"url": {
+				"raw": "http://localhost:8000/api/token/",
+				"protocol": "http",
+				"host": [
+						    "localhost"
+						],
+						"port": "8000",
+						"path": [
+								"api",
+								"token",
+								""
+							]
+			}
+		},
+					"response": []
+}
