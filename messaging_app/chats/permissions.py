@@ -1,4 +1,5 @@
 from rest_framework import permissions
+from rest_framework.permissions import SAFE_METHODS
 from .models import Conversation, Message
 
 class  IsParticipantOfConversation(permissions.BasePermission): 
@@ -22,7 +23,12 @@ class  IsParticipantOfConversation(permissions.BasePermission):
         if isinstance(obj, Conversation):
             return obj.participants.filter(id=request.user.id).exists()
         elif isinstance(obj, Message):
-            return obj.conversation.participants.filter(id=request.user.id).exists()
+            # allow access for viewing only if the user is a participant in the related conversation
+            if request.method in SAFE_METHODS:
+                return obj.conversation.participants.filter(id=request.user.id).exists()
+            # sender of the message to be able to edit/delete
+            elif request.method in ['PUT', 'PATCH', 'DELETE']:
+                return obj.sender == request.user
         return False
             
     
