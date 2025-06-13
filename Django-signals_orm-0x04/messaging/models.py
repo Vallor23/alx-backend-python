@@ -15,8 +15,16 @@ class Notification(models.Model):
     message = models.ForeignKey(Message, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(auto_now_add=True)
     is_read = models.BooleanField(default=False)
-    is_edited = models.BooleanField(default=False)
+    edited = models.BooleanField(default=False)
     notification_type = models.CharField(default='Message', max_length=50)
 
     def __str__(self):
         return f"Notification for{self.user.username} - {self.message}"
+
+class MessageHistory(models.Model):
+    message = models.ForeignKey(Message,on_delete=models.CASCADE, related_name='history')
+    old_content = models.TextField()
+    edited_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Edit history for {self.message.id} edited at {self.edited_at}"
