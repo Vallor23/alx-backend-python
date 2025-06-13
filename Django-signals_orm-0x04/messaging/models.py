@@ -10,7 +10,7 @@ class Message(models.Model):
 
     # New field to link a reply to the message it's replying to
     parent_message = models.ForeignKey(
-        'self',
+        'self',   # points to *another* Message
         null=True,
         blank=True,
         related_name='replies',
