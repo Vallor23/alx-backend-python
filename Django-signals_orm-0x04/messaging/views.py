@@ -9,7 +9,12 @@ def delete_user(request):
     request.user.delete()
     return HttpResponse("User deleted!")
 
-def get_message_replies(pk):
+@login_required
+def get_message(request):
+    messages = Message.objects.filter(sender=request.user).select_related('receiver')
+    return [f"To {msg.receiver.username} : {msg.content}" for msg in messages]
+
+def get_message_replies(request, pk):
     try:
         message = Message.objects.prefetch_related('replies').get(id=pk)
         return [
