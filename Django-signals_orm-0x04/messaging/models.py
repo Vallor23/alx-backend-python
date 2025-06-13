@@ -7,6 +7,17 @@ class Message(models.Model):
     content = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
     edited = models.BooleanField(default=False)
+
+    # New field to link a reply to the message it's replying to
+    parent_message = models.ForeignKey(
+        'self',
+        null=True,
+        blank=True,
+        related_name='replies',
+        on_delete=models.CASCADE
+    )
+
+
     def __str__(self):
         return f'Message from {self.sender} to {self.receiver} at {self.timestamp}'
     
