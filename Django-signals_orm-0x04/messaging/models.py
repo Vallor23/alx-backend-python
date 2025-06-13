@@ -15,7 +15,8 @@ class Notification(models.Model):
     message = models.ForeignKey(Message, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(auto_now_add=True)
     is_read = models.BooleanField(default=False)
+    is_edited = models.BooleanField(default=False)
     notification_type = models.CharField(default='Message', max_length=50)
 
     def __str__(self):
-        return f"Notification for{self.user.username} - {self.message.id}"
+        return f"Notification for{self.user.username} - {self.message}"
