@@ -4,8 +4,8 @@ from django.contrib.auth.models import User
 
 # Custom ORM Manager for Unread messages
 class  UnreadMessagesManager(models.Manager):
-    def unread_messages(self):
-        return self.filter(is_read=True)
+    def get_queryset(self):
+        return super().get_queryset().filter(is_read=False)
 
 class Message(models.Model):
     sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name='sent_messages')
@@ -14,9 +14,11 @@ class Message(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
     edited = models.BooleanField(default=False)
     is_read = models.BooleanField(default=False)
+
     # New field to link a reply to the message it's replying to. 'self' points to *another* Message
     parent_message = models.ForeignKey('self', null=True, blank=True, related_name='replies', on_delete=models.CASCADE)
-    objects = UnreadMessagesManager()
+
+    unread = UnreadMessagesManager()  #Custom manager
     
     def __str__(self):
         return f'Message from {self.sender} to {self.receiver} at {self.timestamp}'
