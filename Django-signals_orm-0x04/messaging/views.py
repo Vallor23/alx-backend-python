@@ -11,7 +11,7 @@ def delete_user(request):
     return HttpResponse("User deleted!")
 
 @login_required
-
+@cache_page(60 * 1)
 def get_message(request):
     messages = Message.objects.filter(sender=request.user).select_related('receiver')
     data = [
