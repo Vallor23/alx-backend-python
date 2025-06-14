@@ -21,9 +21,10 @@ def get_message(request):
     return JsonResponse(data, safe=False)
 
 def get_unread_messages(request):
-    messages =  Message.unread.unread_for_user(request.user)
-    return [f"Message ID: {msg.id}" for msg in messages]
-    
+    messages =  Message.unread.unread_for_user(request.user).only('is_read')
+    data = [f"Message ID: {msg.id}" for msg in messages]
+    return JsonResponse(data, safe=False)
+
 # Implement a recursive function to fetch all nested replies
 def  get_threaded_replies(message, depth=0):
     indent = "_" * depth  # Indent replies for clarity
@@ -41,8 +42,3 @@ def display_thread(request, pk):
         return HttpResponse("<br>".join(thread))
     except Message.DoesNotExist:
         return HttpResponse("Message not found")
-    
-def get_unread_messages(request):
-    unread_messages = Message.unread.filter(receiver=request.user).only('is_read')
-    message_ids =",".join([{msg.id} for msg in unread_messages])
-    return f"Unread Messages : {message_ids}"
