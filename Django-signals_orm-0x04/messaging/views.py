@@ -14,15 +14,23 @@ def get_message(request):
     messages = Message.objects.filter(sender=request.user).select_related('receiver')
     return [f"To {msg.receiver.username} : {msg.content}" for msg in messages]
 
-def get_message_replies(request, pk):
+# Implement a recursive function to fetch all nested replies
+def  get_threaded_replies(message, depth=0):
+    indent = "_" * depth  # Indent replies for clarity
+    output = [f"{indent} {message.content}"]
+
+    for reply in message.replies.all().order_by('timestamp'):
+        output += get_threaded_replies(reply, depth + 1)  # recurse
+    return output
+
+# view that uses get_message_threaded_replies func
+def display_thread(request, pk):
     try:
-        message = Message.objects.prefetch_related('replies').get(id=pk)  # 'replies' is the related_name on the ForeignKey - parent_message
-        return [
-            f"Replies to '{message.content}' : {reply.content}"
-            for reply in message.replies.all()
-        ] 
+        parent_message = Message.objects.prefetch_related('replies').get(id=pk)  # 'replies' is the related_name on the ForeignKey - parent_message
+        thread = get_threaded_replies(parent_message)
+        return HttpResponse("<br>".join(thread))
     except Message.DoesNotExist:
-        return []
+        return HttpResponse("Message not found")
     
 def get_unread_messages(request):
     unread_messages = Message.unread.filter(receiver=request.user).only('is_read')
