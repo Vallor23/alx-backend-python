@@ -6,4 +6,4 @@ class UnreadMessagesManager(models.Manager):
         return super().get_queryset().filter(is_read=False)
     
     def unread_for_user(self, user):
-        return self.filter(receiver=user)
+        return self.get_queryset().filter(receiver=user)
