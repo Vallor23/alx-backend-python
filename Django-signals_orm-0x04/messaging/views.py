@@ -14,7 +14,9 @@ def get_message(request):
     messages = Message.objects.filter(sender=request.user).select_related('receiver')
     return [f"To {msg.receiver.username} : {msg.content}" for msg in messages]
 
-def get_unread_messages():
+def get_unread_messages(request):
+    messages =  Message.unread.unread_for_user(request.user)
+    return [f"Message ID: {msg.id}" for msg in messages]
     
 # Implement a recursive function to fetch all nested replies
 def  get_threaded_replies(message, depth=0):
