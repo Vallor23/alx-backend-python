@@ -1,7 +1,8 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from models import Message
+from django.views.decorators.cache import cache_page
 from django.contrib.auth.decorators import login_required
 
 @login_required
@@ -10,9 +11,14 @@ def delete_user(request):
     return HttpResponse("User deleted!")
 
 @login_required
+
 def get_message(request):
     messages = Message.objects.filter(sender=request.user).select_related('receiver')
-    return [f"To {msg.receiver.username} : {msg.content}" for msg in messages]
+    data = [
+        {"to": msg.receiver.username, "content": msg.content}
+        for msg in messages
+    ]
+    return JsonResponse(data, safe=False)
 
 def get_unread_messages(request):
     messages =  Message.unread.unread_for_user(request.user)
