@@ -26,5 +26,5 @@ def get_message_replies(request, pk):
     
 def get_unread_messages(request):
     unread_messages = Message.unread.filter(receiver=request.user).only('is_read')
-    message_ids = [{msg.id} for msg in unread_messages]
+    message_ids =",".join([{msg.id} for msg in unread_messages])
     return f"Unread Messages : {message_ids}"
