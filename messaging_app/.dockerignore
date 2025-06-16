@@ -1,0 +1,35 @@
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments (if you ever add one)
+venv/
+env/
+
+# Git
+.git/
+.gitignore
+
+# Docker-related
+.dockerignore
+
+# Editor & OS-specific files
+*.swp
+*.swo
+*.bak
+*.tmp
+.DS_Store
+.idea/
+.vscode/
+
+# Postman collections (usually not needed in the image)
+post_man-Collections/
+
+# Databases or local test files (optional)
+*.sqlite3
+*.log
+
+# Static/media (optional if you collect them externally)
+staticfiles/
+media/
