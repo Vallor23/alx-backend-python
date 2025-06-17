@@ -14,16 +14,16 @@ class User(models.Model):
     last_seen = models.DateField(null= True, blank= True)
 
     def __str__(self):
-        return f"{User.first_name} {User.last_name}"
+        return f"{User.username}"
     
 
 class Message(models.Model):
     message_id = models.UUIDField(primary_key= True, default= uuid.uuid4, editable= False)
     sender = models.ForeignKey('User', on_delete= models.CASCADE, related_name= 'sent_messages')
     receiver = models.ForeignKey('User', on_delete= models.CASCADE, related_name= 'received_messages')
-    message_body = models.CharField(max_length=200)
+    message_body = models.TextField()
     sent_at = models.DateTimeField(auto_now_add= True)
-    conversation = models.ForeignKey('Conversation', on_delete= models.CASCADE, related_name= 'conversations')
+    conversation = models.ForeignKey('Conversation', on_delete= models.CASCADE, related_name= 'messages')
 
 
 class Conversation(models.Model):
