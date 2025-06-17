@@ -1,12 +1,19 @@
 FROM python:3.12-slim
 WORKDIR /app
 
+# Update and install build deps first
+RUN apt-get update && apt-get install -y \
+    gcc \
+    pkg-config \
+    default-libmysqlclient-dev  \
+    && rm -rf /var/lib/apt/lists/*
+
 # Install the application dependencies
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Install system dependencies
-RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y git
 
 # Copy in the source code
 COPY . .
