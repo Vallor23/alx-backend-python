@@ -1,5 +1,8 @@
-FROM python:3.12
+FROM python:3.12-slim
 WORKDIR /app
+
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
 
 # Update and install build deps first
 RUN apt-get update && apt-get install -y \
@@ -23,4 +26,4 @@ EXPOSE 8000
 RUN useradd app
 USER app
 
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0", "-p", "8000"]
