@@ -15,7 +15,7 @@ services:
     image: mysql:8.0
     restart: always
     environment:
-      MYSQL_DATABASE: messaging_db
+      MYSQL_DB: messaging_db
       MYSQL_USER: enos
       MYSQL_PASSWORD: Vallor@2025
       MYSQL_ROOT_PASSWORD: Vallor@2025
