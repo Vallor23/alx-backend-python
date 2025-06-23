@@ -9,6 +9,6 @@ echo "📡 Cluster Info:"
 kubectl cluster-info
 
 echo "📦 System Pods:"
-kubectl get po -A
+kubectl get Pods
 
 echo "✅ Kubernetes cluster is up and running!"
