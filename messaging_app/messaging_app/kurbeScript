@@ -1,4 +1,12 @@
 #!/bin/bash
-minkube start
+
+set -e  # Exit on any error
+
+echo "🚀 Starting Minikube..."
+minikube start
+
+echo "📡 Cluster Info:"
 kubectl cluster-info
+
+echo "📦 System Pods:"
 kubectl get pods
