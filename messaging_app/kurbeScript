@@ -1,0 +1,4 @@
+#!/bin/bash
+minkube start
+kubectl cluster-info
+kubectl get pods
