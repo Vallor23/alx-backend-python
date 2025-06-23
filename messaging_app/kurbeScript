@@ -1,4 +1,4 @@
 #!/bin/bash
-minkube start
+minikube start
 kubectl cluster-info
 kubectl get pods
