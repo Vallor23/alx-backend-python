@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "🔁 Scaling deployment '$DEPLOYMENT_NAME' to 3 replicas..."
+echo "🔁 Scaling deployment messaging-app to 3 replicas..."
 kubectl scale deployment messaging-app --replicas=3
 
 echo "Waiting for pods to be ready..."
