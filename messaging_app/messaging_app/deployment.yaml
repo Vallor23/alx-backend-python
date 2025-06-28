@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: messaging-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels: { app: messaging }
+  template:
+    metadata:
+      labels: { app: messaging }
+    spec:
+      containers:
+        - name: messaging-app
+          image: enos137/messaging-app:latest
+          env:
+            - name: DJANGO_SECRET_KEY
+              valueFrom: { secretKeyRef: { name: messaging-secrets, key: DJANGO_SECRET_KEY } }
+            - name: MYSQL_DB
+              valueFrom: { secretKeyRef: { name: messaging-secrets, key: MYSQL_DB } }
+            - name: MYSQL_USER
+              valueFrom: { secretKeyRef: { name: messaging-secrets, key: MYSQL_USER} }
+            - name: MYSQL_PASSWORD
+              valueFrom: { secretKeyRef: { name: messaging-secrets, key: MYSQL_PASSWORD } }
+            - name: MYSQL_HOST
+              valueFrom: { secretKeyRef: { name: messaging-secrets, key: MYSQL_HOST } }
+            - name: MYSQL_PORT
+              valueFrom: { secretKeyRef: { name: messaging-secrets, key: MYSQL_PORT} }
+            - name: DJANGO_ALLOWED_HOSTS
+              valueFrom: { configMapKeyRef: { name: messaging-config, key: DJANGO_ALLOWED_HOSTS } }
+          ports:
+            - containerPort: 8000
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "256Mi"
+              cpu: "250m"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: messaging-service
+spec:
+  selector: { app: messaging }
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
+  type: NodePort
