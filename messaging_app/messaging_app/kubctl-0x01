@@ -1,0 +1,14 @@
+#!/bin/bash
+
+echo "🔁 Scaling deployment '$DEPLOYMENT_NAME' to 3 replicas..."
+kubectl scale deployment messaging-app --replicas=3
+
+echo "Waiting for pods to be ready..."
+sleep 10
+kubectl get pods
+
+echo "starting load test with wrk(duration: 15s)..."
+wrk -t2 -c50 -d15s http://127.0.0.1:8000
+
+echo "📊 Monitoring resource usage(CPU & Memory)..."
+kubectl top pod
