@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/service-upstream: "true"
+  name: messaging-ingress
+  namespace: default
+  labels:
+    name: messaging-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: messaging-local
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/api/(.*)"
+        backend:
+          service:
+            name: messaging-service
+            port:
+              number: 8000
