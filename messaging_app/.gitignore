@@ -48,3 +48,5 @@ pipenv/
 
 # If you have local config files
 local_settings.py
+
+messaging-secrets.yaml
