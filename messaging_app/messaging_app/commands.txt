@@ -1,0 +1,3 @@
+#!/bin/bash
+
+kubctl apply -f ingress.yaml
