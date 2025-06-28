@@ -11,4 +11,4 @@ echo "starting load test with wrk(duration: 15s)..."
 wrk -t2 -c50 -d15s http://127.0.0.1:8000
 
 echo "📊 Monitoring resource usage(CPU & Memory)..."
-kubectl top pod
+kubectl top pods
