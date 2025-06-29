@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: django
-          image: enos137/messaging-app:blue
+          image: enos137/messaging-app:2.0
           env:
             - name: DJANGO_SECRET_KEY
               valueFrom: { secretKeyRef: { name: messaging-secrets, key: DJANGO_SECRET_KEY } }
