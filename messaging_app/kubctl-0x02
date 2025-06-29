@@ -1,0 +1,22 @@
+
+# Apply both deployments
+echo "🚀 Deploying blue version..."
+kubectl apply -f blue_deployment.yaml
+
+echo "🚀 Deploying green version..."
+kubectl apply -f green_deployment.yaml
+
+
+# Apply service (initially pointing to blue)
+echo "🔧 Applying service routing to blue..."
+kubectl apply -f kubeservice.yaml
+
+# Wait briefly
+echo "⏳ Waiting 10s for pods to start..."
+sleep 10
+
+# Get pod name for green
+GREEN_POD= $(kubectl get pods -l app=django,version=green)
+
+echo "🔍 Checking logs for green deployment pod: $GREEN_POD"
+kubectl logs "$GREEN_POD"
