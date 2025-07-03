@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        VENV_DIR= 'venv'
+        VENV_DIR= 'messaging_app/venv'
         IMAGE_NAME= 'enos137/messaging-app:latest'
     }
 
