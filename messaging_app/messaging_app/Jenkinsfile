@@ -15,9 +15,9 @@ pipeline {
                     credentialsId: 'github-ssh-key'
             }
         }
-        stage('Install dependencies') {
+        stage('Install dependencies & Run Tests') {
             steps {
-                echo 'Installing Python dependencies for messaging-app...'
+                echo 'Installing dependencies and running tests...'
                 script {
                     docker.image('python:3.10').inside {
                         dir ("${PROJECT_ROOT}") {
@@ -26,6 +26,8 @@ pipeline {
                                 . venv/bin/activate
                                 pip install --upgrade pip
                                 pip install -r requirements.txt
+                                mkdir -p reports
+                                pytest --junitxml=reports/test-results.xml
                             '''
                         }
                     }  
@@ -36,33 +38,17 @@ pipeline {
             steps {
                 echo 'Building Docker image...'
                 script {
-                    docker build ("${IMAGE_NAME}")
+                    def appImage= docker build ("${IMAGE_NAME}", "${PROJECT_ROOT}")
                 }
             }
         }
         stage('Push to Docker Hub') {
             steps {
-                 echo 'Pushing Docker image to Docker Hub...'
+                echo 'Pushing Docker image to Docker Hub...'
                 script {
                     docker.withRegistry('https://index.docker.io/v1/', 'dockerhub-creds') {
-                        docker.image("${IMAGE_NAME}").push()
+                        appImage.push()
                     }
-                }
-            }
-        }
-        stage('Run Tests') {
-            steps {
-                echo 'Running tests with pytest...'
-                script {
-                    docker.image('python:3.10').inside {
-                        dir("${PROJECT_ROOT}") {
-                            sh '''
-                                . venv/bin/activate
-                                mkdir -p reports
-                                pytest --junitxml=reports/test-results.xml
-                            '''
-                        }
-                    }  
                 }
             }
         }
