@@ -18,9 +18,9 @@ pipeline {
         stage('Install dependencies') {
             steps {
                 echo 'Installing Python dependencies for messaging-app...'
-                dir "${PROJECT_ROOT}" {
+                dir ("${PROJECT_ROOT}") {
                     sh '''
-                        python -m venv $VENV_DIR
+                        python -m venv venv
                         . venv/bin/activate
                         pip install --upgrade pip
                         pip install -r requirements.txt
@@ -47,10 +47,13 @@ pipeline {
         stage('Run Tests') {
             steps {
                 echo 'Running tests with pytest...'
-                sh '''
-                    . venv/bin/activate
-                    pytest --junitxml=reports/test-results.xml
-                '''
+                dir("${PROJECT_ROOT}") {
+                    sh '''
+                        . venv/bin/activate
+                        mkdir -p reports
+                        pytest --junitxml=reports/test-results.xml
+                    '''
+                }
             }
         }
         stage('Publish Test Report') {
