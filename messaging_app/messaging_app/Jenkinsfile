@@ -16,7 +16,7 @@ pipeline {
         stage('Install dependencies') {
             steps {
                 withPythonEnv("$VENV_DIR") {
-                    sh 'pip install -r requirements.txt'
+                    sh 'pip3 install -r messaging_app/requirements.txt'
                 }
             }
         }
