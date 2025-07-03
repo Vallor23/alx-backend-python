@@ -16,6 +16,11 @@ pipeline {
             }
         }
         stage('Install dependencies') {
+            agent {
+                docker {
+                    image 'python:3.10'
+                }
+            }
             steps {
                 echo 'Installing Python dependencies for messaging-app...'
                 dir ("${PROJECT_ROOT}") {
@@ -45,6 +50,11 @@ pipeline {
             }
         }
         stage('Run Tests') {
+            agent {
+                docker {
+                    image 'python:3.10'
+                }
+            }
             steps {
                 echo 'Running tests with pytest...'
                 dir("${PROJECT_ROOT}") {
