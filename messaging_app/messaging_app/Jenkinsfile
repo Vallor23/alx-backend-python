@@ -43,16 +43,17 @@ pipeline {
         stage('Push to Docker Hub') {
             steps {
                 script {
-                    docker.withRegistry('https://index.docker.io/v1/, 'dockerhub-creds') {
+                    docker.withRegistry('https://index.docker.io/v1/', 'dockerhub-creds') {
                         docker.image("${IMAGE_NAME}").push()
                     }
+                }
             }
         }
     }
-
+    
     post {
         always {
-            archiveArtifacts artifacts: 'reports/test-results.xml', allowEmptyArchive: True
+            archiveArtifacts artifacts: 'reports/test-results.xml', allowEmptyArchive: true
         }
     }
 }
