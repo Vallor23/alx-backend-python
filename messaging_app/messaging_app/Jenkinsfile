@@ -25,13 +25,11 @@ pipeline {
         }
         stage('Run Tests') {
             steps {
-                withPythonEnv("$VENV_DIR") {
-                    sh '''
-                        python3 -m venv $VENV_DIR
-                        . $VENV_DIR/bin/activate
-                        pytest --junitxml=reports/test-results.xml
-                    '''
-                }
+                sh '''
+                    python3 -m venv $VENV_DIR
+                    . $VENV_DIR/bin/activate
+                    pytest --junitxml=reports/test-results.xml
+                '''
             }
         }
         stage('Publish Test Report') {
