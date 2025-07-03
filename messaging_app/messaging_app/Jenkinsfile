@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        VENV_DIR= 'venv',
-        IMAGE_NAME= 'enos137/messaging-app'
+        VENV_DIR= 'venv'
+        IMAGE_NAME= 'enos137/messaging-app:latest'
     }
 
     stages {
