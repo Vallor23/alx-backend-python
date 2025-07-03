@@ -45,8 +45,8 @@ pipeline {
             }
         }
         stage('Run Tests') {
-            echo 'Running tests with pytest...'
             steps {
+                echo 'Running tests with pytest...'
                 sh '''
                     . venv/bin/activate
                     pytest --junitxml=reports/test-results.xml
