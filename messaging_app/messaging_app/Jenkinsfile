@@ -23,18 +23,23 @@ pipeline {
             }
             steps {
                 echo 'Installing Python dependencies for messaging-app...'
-                dir ("${PROJECT_ROOT}") {
-                    sh '''
-                        python -m venv venv
-                        . venv/bin/activate
-                        pip install --upgrade pip
-                        pip install -r requirements.txt
-                    '''
+                script {
+                    docker.image('python:3.10').inside {
+                        dir ("${PROJECT_ROOT}") {
+                            sh '''
+                                python -m venv venv
+                                . venv/bin/activate
+                                pip install --upgrade pip
+                                pip install -r requirements.txt
+                            '''
+                        }
+                    }  
                 }
             }
         }
         stage('Build Docker image') {
             steps {
+                echo 'Building Docker image...'
                 script {
                     docker build ("${IMAGE_NAME}")
                 }
@@ -42,6 +47,7 @@ pipeline {
         }
         stage('Push to Docker Hub') {
             steps {
+                 echo 'Pushing Docker image to Docker Hub...'
                 script {
                     docker.withRegistry('https://index.docker.io/v1/', 'dockerhub-creds') {
                         docker.image("${IMAGE_NAME}").push()
@@ -57,12 +63,16 @@ pipeline {
             }
             steps {
                 echo 'Running tests with pytest...'
-                dir("${PROJECT_ROOT}") {
-                    sh '''
-                        . venv/bin/activate
-                        mkdir -p reports
-                        pytest --junitxml=reports/test-results.xml
-                    '''
+                script {
+                    docker.image('python:3.10').inside {
+                        dir("${PROJECT_ROOT}") {
+                            sh '''
+                                . venv/bin/activate
+                                mkdir -p reports
+                                pytest --junitxml=reports/test-results.xml
+                            '''
+                        }
+                    }  
                 }
             }
         }
