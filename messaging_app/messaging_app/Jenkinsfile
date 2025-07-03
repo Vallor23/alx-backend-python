@@ -16,15 +16,21 @@ pipeline {
         }
         stage('Install dependencies') {
             steps {
-                withPythonEnv("$VENV_DIR") {
-                    sh 'pip3 install -r messaging_app/requirements.txt'
-                }
+                sh '''
+                    python3 -m venv $VENV_DIR
+                    . $VENV_DIR/bin/activate
+                    pip install -r messaging_app/requirements.txt
+                '''
             }
         }
         stage('Run Tests') {
             steps {
                 withPythonEnv("$VENV_DIR") {
-                    sh 'pytest --junitxml=reports/test-results.xml'
+                    sh '''
+                        python3 -m venv $VENV_DIR
+                        . $VENV_DIR/bin/activate
+                        pytest --junitxml=reports/test-results.xml
+                    '''
                 }
             }
         }
