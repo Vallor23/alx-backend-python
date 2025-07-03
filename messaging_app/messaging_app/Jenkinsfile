@@ -2,14 +2,15 @@ pipeline {
     agent any
 
     environment {
-        VENV_DIR= 'venv'
+        VENV_DIR= 'venv',
+        IMAGE_NAME= 'enos137/messaging-app'
     }
 
     stages {
         stage('Checkout code') {
             steps {
                 git branch: 'main',
-                    url: 'https://github.com/Vallor23/alx-backend-python/tree/main/messaging_app',
+                    url: 'https://github.com/Vallor23/alx-backend-python.git',
                     credentialsId: 'github-ssh-key'
             }
         }
@@ -30,6 +31,21 @@ pipeline {
         stage('Publish Test Report') {
             steps {
                 junit 'reports/test-results.xml'
+            }
+        }
+        stage('Build Docker image') {
+            steps {
+                script {
+                    docker build ("${IMAGE_NAME}")
+                }
+            }
+        }
+        stage('Push to Docker Hub') {
+            steps {
+                script {
+                    docker.withRegistry('https://index.docker.io/v1/, 'dockerhub-creds') {
+                        docker.image("${IMAGE_NAME}").push()
+                    }
             }
         }
     }
