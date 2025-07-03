@@ -2,12 +2,13 @@ pipeline {
     agent any
 
     environment {
-        VENV_DIR= 'messaging_app/venv'
+        PROJECT_ROOT = 'messaging-app'
         IMAGE_NAME= 'enos137/messaging-app:latest'
     }
 
     stages {
         stage('Checkout code') {
+            echo 'Checking out code from GitHub...'
             steps {
                 git branch: 'main',
                     url: 'https://github.com/Vallor23/alx-backend-python.git',
@@ -15,26 +16,14 @@ pipeline {
             }
         }
         stage('Install dependencies') {
-            steps {
+            echo 'Installing Python dependencies for messaging-app...'
+            dir "${PROJECT_ROOT}" {
                 sh '''
                     python -m venv $VENV_DIR
-                    . $VENV_DIR/bin/activate
+                    . venv/bin/activate
                     pip install --upgrade pip
-                    pip install -r messaging_app/requirements.txt
+                    pip install -r requirements.txt
                 '''
-            }
-        }
-        stage('Run Tests') {
-            steps {
-                sh '''
-                    . $VENV_DIR/bin/activate
-                    pytest --junitxml=reports/test-results.xml
-                '''
-            }
-        }
-        stage('Publish Test Report') {
-            steps {
-                junit 'reports/test-results.xml'
             }
         }
         stage('Build Docker image') {
@@ -51,6 +40,20 @@ pipeline {
                         docker.image("${IMAGE_NAME}").push()
                     }
                 }
+            }
+        }
+        stage('Run Tests') {
+            echo 'Running tests with pytest...'
+            steps {
+                sh '''
+                    . venv/bin/activate
+                    pytest --junitxml=reports/test-results.xml
+                '''
+            }
+        }
+        stage('Publish Test Report') {
+            steps {
+                junit 'reports/test-results.xml'
             }
         }
     }
