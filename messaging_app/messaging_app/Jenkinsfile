@@ -8,22 +8,24 @@ pipeline {
 
     stages {
         stage('Checkout code') {
-            echo 'Checking out code from GitHub...'
             steps {
+                echo 'Checking out code from GitHub...'
                 git branch: 'main',
                     url: 'https://github.com/Vallor23/alx-backend-python.git',
                     credentialsId: 'github-ssh-key'
             }
         }
         stage('Install dependencies') {
-            echo 'Installing Python dependencies for messaging-app...'
-            dir "${PROJECT_ROOT}" {
-                sh '''
-                    python -m venv $VENV_DIR
-                    . venv/bin/activate
-                    pip install --upgrade pip
-                    pip install -r requirements.txt
-                '''
+            steps {
+                echo 'Installing Python dependencies for messaging-app...'
+                dir "${PROJECT_ROOT}" {
+                    sh '''
+                        python -m venv $VENV_DIR
+                        . venv/bin/activate
+                        pip install --upgrade pip
+                        pip install -r requirements.txt
+                    '''
+                }
             }
         }
         stage('Build Docker image') {
