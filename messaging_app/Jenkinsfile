@@ -8,7 +8,9 @@ pipeline {
     stages {
         stage('Checkout code') {
             steps {
-                git url: 'https://github.com/Vallor23/alx-backend-python/tree/main/messaging_app', branch: 'main'
+                git branch: 'main',
+                    url: 'https://github.com/Vallor23/alx-backend-python/tree/main/messaging_app',
+                    credentialsId: 'github-ssh-key'
             }
         }
         stage('Install dependencies') {
