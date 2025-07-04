@@ -86,14 +86,13 @@ WSGI_APPLICATION = 'messaging_app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': env('MYSQL_DB'),
-        'USER': env('MYSQL_USER'),
-        'PASSWORD': env('MYSQL_PASSWORD'),
-        'HOST': env('MYSQL_HOST'),
-        'PORT': env('MYSQL_PORT'),
+        'NAME': env('MYSQL_DB', 'test_db'),
+        'USER': env('MYSQL_USER', 'test_user'),
+        'PASSWORD': env('MYSQL_PASSWORD', 'test_pass'),
+        'HOST': env('MYSQL_HOST', '127.0.0.1'),
+        'PORT': env('MYSQL_PORT', '3306'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
